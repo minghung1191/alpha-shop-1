@@ -1,26 +1,16 @@
-import StepProgress from "./components/StepProgress.jsx";
-import Step1 from "./components/Step1.jsx";
-import Step2 from "./components/Step2.jsx";
-import Step3 from "./components/Step3.jsx";
-import ProgressControl from "./components/ProgressControl.jsx"
-import "./App.css"
+import Main from "./components/Main/Main.jsx";
+import RegisterSection from "./components/Main/RegisterSection/RegisterSection.jsx";
+import ProgressControl from "./components/Main/ProgressControl/ProgressControl.jsx"
+//引入scss基本設定
+import "./base.scss";
+import "./reset.scss";
 
 function App() {
   return (
-    <div>
-      <main>
-        <div>
-        <StepProgress />
-        <section>
-          <Step1 />
-          <Step2 />
-          <Step3 />
-        </section>
-        <section>
+    <div className="App">
+      <Main />
+          <RegisterSection />
           <ProgressControl />
-        </section>
-        </div>
-      </main>
     </div>
   );
 }
