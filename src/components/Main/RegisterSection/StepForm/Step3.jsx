@@ -1,4 +1,4 @@
-import styles from "./Step3.scss";
+import styles from "./Step3.module.scss";
 
 function CardInfo ({ class2, class3, label, placeHolder }) {
   return (

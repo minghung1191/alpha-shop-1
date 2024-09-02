@@ -12,7 +12,7 @@ section.formBody {
 
     .inputGroup {
         margin-top: 24px;
-
+        margin-right: 24px;
         .inputLabel {
             font-weight: bold;
             font-size: 12px;
@@ -22,6 +22,8 @@ section.formBody {
         }
         .selectContainer {
             position: relative;
+            padding-right: 6px;
+            text-align: center;
             &::after {
                 position: absolute;
                 top: 50%;
