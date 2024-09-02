@@ -1,55 +1,112 @@
+%done-phase {
+.icon {
+    display: inline-block;
+}
+
+.text {
+    display: none;
+}
+}
+
+%undone-phase {
+.icon {
+    display: none;
+}
+
+.text {
+    display: inline-block;
+}
+}
+
+%current-text {
+color: var(--progress-current-color);
+}
+
+%current-icon {
+@extend %current-text;
+background-color: transparent;
+border: 1px solid var(--progress-current-color);
+@extend %undone-phase;
+}
+
+%undone-text {
+color: var(--progress-undone-color);
+}
+
+%undone-icon {
+@extend %undone-text;
+background-color: transparent;
+border: 1px solid var(--progress-undone-color);
+@extend %undone-phase;
+}
+
+%done-text {
+@extend %current-text;
+}
+
+%done-icon {
+color: var(--progress-done-color);
+background-color: transparent;
+@extend %done-phase;
+}
+
 section.progressContainer {
+// border: 3px solid red;
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-top: 48px;
+width: 100%;
+
+.progressBar {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 48px;
-    width: 100%;
+    flex-grow: 1;
+    //原先使用max-width無法完整呈現
+    width: 60px;
+    height: 1px;
+    margin: 0px 8px;
+    border-width: 2px;
+    border-style: solid;
+}
 
-    .progressBar {
-        display: flex;
-        flex-grow: 1;
-        width: 60px;
-        height: 1px;
-        margin: 0px 8px;
-        border-width: 2px;
-        border-style: solid;
+.progressGroup {
+    display: flex;
+
+    .progressIcon {
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    border-radius: 50%;
+
+    .text {
+        width: inherit;
+        height: inherit;
+        position: absolute;
+        top: 0px;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 24px;
+        text-align: center;
+        color: inherit;
+        // 暫時多加的，為了顯示圓圈
+        border: 1px solid black;
+        border-radius: 50%;
     }
 
-    .progressGroup {
-        display: flex;
-
-        .progressIcon {
-            display: inline-block;
-            position: relative;
-            width: 27px;
-            height: 27px;
-            margin-right: 8px;
-            border-radius: 50%;
-
-            .text {
-                width: inherit;
-                height: inherit;
-                position: absolute;
-                top: 0px;
-                font-size: 12px;
-                font-weight: 700;
-                line-height: 24px;
-                text-align: center;
-                color: inherit;
-                border: 1px solid black;
-                border-radius: 50%;
-            }
-            .icon {
-                width: inherit;
-                height: inherit;
-            }
-        }
-        .progressLabel {
-            font-weight: 400;
-            line-height: 24px;
-            color: var(--main-text);
-        }
+    .icon {
+        width: inherit;
+        height: inherit;
     }
+    }
+
+    .progressLabel {
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--main-text);
+    }
+}
 }
 
 $phase-map: (
@@ -68,77 +125,65 @@ section.registerContainer[data-phase="#{$index}"] {
     }
 
     &[data-order='2'] {
-    @if $index ==1 {
+        @if $index ==1 {
         border-color: var(--undone-progress-border);
-    }
+        }
 
-    @else {
+        @else {
         border-color: var(--done-progress-border);
+        }
     }
     }
-}
 
     @each $key,
     $phase in $phase-map {
 
-      // progress-group
+    // progress-group
     .progressGroup[data-phase="#{$phase}"] {
-    @if $key >$index {
+        @if $key >$index {
         .progressIcon {
-        @extend %undone-icon;
+            @extend %undone-icon;
         }
 
         .progressLabel {
-        @extend %undone-text;
+            @extend %undone-text;
         }
-    }
+        }
 
-    @else if $key ==$index {
+        @else if $key ==$index {
         .progressIcon {
-        @extend %current-icon;
+            @extend %current-icon;
         }
 
         .progressLabel {
-        @extend %current-text;
+            @extend %current-text;
         }
-    }
+        }
 
-    @else {
+        @else {
         .progressIcon {
-        @extend %done-icon;
+            @extend %done-icon;
         }
 
         .progressLabel {
-        @extend %done-text;
+            @extend %done-text;
         }
-    }
+        }
 
-    @if $phase =='address' {
+        @if $phase =='address' {
         .progressIcon {
-        background-color: var(--pg-addr-bg-color);
-        border-color: var(--pg-addr-bg-color);
+            background-color: var(--pg-addr-bg-color);
+            border-color: var(--pg-addr-bg-color);
 
-        .text {
+            .text {
             color: var(--pg-addr-color);
-        }
+            }
         }
         }
     }
 
     // form
     form[data-phase="#{$phase}"] {
-    @if $index ==$key {
-        display: flex;
-    }
-
-    @else {
-        display: none;
-    }
-    }
-
-    // progress-control
-    &~section.progressControlContainer {
-    .buttonGroup[data-phase="#{$phase}"] {
         @if $index ==$key {
         display: flex;
         }
@@ -147,58 +192,19 @@ section.registerContainer[data-phase="#{$index}"] {
         display: none;
         }
     }
+
+    // progress-control
+    &~section.progressControlContainer {
+        .buttonGroup[data-phase="#{$phase}"] {
+        @if $index ==$key {
+            display: flex;
+        }
+
+        @else {
+            display: none;
+        }
+        }
+    }
     }
 }
 }
-}
-
-%done-phase {
-.icon {
-    display: inline-block;
-}
-.text {
-    display: none;
-}
-}
-
-%undone-phase {
-    .icon {
-        display: none;
-    }
-
-    .text {
-        display: inline-block;
-    }
-}
-
-%current-text {
-    color: var(--progress-current-color);
-}
-
-%current-icon {
-    @extend %current-text;
-    background-color: transparent;
-    border: 1px solid var(--progress-current-color);
-    @extend %undone-phase;
-}
-
-%undone-text {
-    color: var(--progress-undone-color);
-}
-
-%undone-icon {
-    @extend %undone-text;
-    background-color: transparent;
-    border: 1px solid var(--progress-undone-color);
-    @extend %undone-phase;
-}
-
-%done-text {
-    @extend %current-text;
-}
-
-%done-icon {
-    color: var(--progress-done-color);
-    background-color: transparent;
-    @extend %done-phase;
-}  

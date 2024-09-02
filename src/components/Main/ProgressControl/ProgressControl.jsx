@@ -15,6 +15,8 @@ function PreviousStep() {
   )
 }
 function NextStep () {
+  //忘記加上return導致畫面才沒呈現button畫面
+  return (
   <button className={styles.next}>
     下一步
     <img 
@@ -23,6 +25,7 @@ function NextStep () {
       alt="right-arrow.svg" 
     />
   </button>
+  )
 }
 //目前只出現Step1畫面
 export default function ProgressControl () {
