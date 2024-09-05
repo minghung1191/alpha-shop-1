@@ -1,8 +1,8 @@
 import styles from "./Step3.module.scss";
 
-function CardInfo ({ class2, class3, label, placeHolder }) {
+function CardInfo ({ inputLg, inputSm, label, placeHolder }) {
   return (
-    <div class={`${styles.inputGroup} ${class2} ${class3}`}>
+    <div class={`${styles.inputGroup} ${inputLg} ${inputSm}`}>
     <div class={styles.inputLabel}>{label}</div>
     <input type="text" placeholder={placeHolder} />
     </div>
@@ -15,14 +15,14 @@ export default function Step3 () {
               <h3 className={styles.formTitle}>付款資訊</h3>
               <section className={`${styles.formBody} col col-12`}>
                 <div className="col col-12">
-                  <CardInfo class2="input-w-lg-4" class3="input-w-sm-full" label="持卡人姓名" placeHolder="John Doe" />
+                  <CardInfo inputLg="input-w-lg-4" inputSm="input-w-sm-full" label="持卡人姓名" placeHolder="John Doe" />
                 </div>
                 <div className="col col-12">
-                <CardInfo class2="input-w-lg-4" class3="input-w-sm-full" label="卡號" placeHolder="1111 2222 3333 4444" />
+                <CardInfo inputLg="input-w-lg-4" inputSm="input-w-sm-full" label="卡號" placeHolder="1111 2222 3333 4444" />
                 </div>
                 <div className="col col-12">
-                <CardInfo class2="input-w-lg-3" class3="input-w-sm-s3" label="有效期限" placeHolder="MM/YY" />
-                <CardInfo class2="input-w-lg-3" class3="input-w-sm-s3" label="CVC / CCV" placeHolder="123" />
+                <CardInfo inputLg="input-w-lg-3" inputSm="input-w-sm-s3" label="有效期限" placeHolder="MM/YY" />
+                <CardInfo inputLg="input-w-lg-3" inputSm="input-w-sm-s3" label="CVC / CCV" placeHolder="123" />
                 </div>
               </section>
             </form>
