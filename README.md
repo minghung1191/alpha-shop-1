@@ -3,8 +3,10 @@
 
 本次專案完成後預期產出畫面：
 ![image](https://github.com/minghung1191/alpha-shop-1/blob/main/public/images/preview-1.png)
-2024.09.02目前所產出的畫面：
+2024.09.02所產出的畫面：
 <img width="1037" alt="alpha-camp-step1" src="https://github.com/user-attachments/assets/bfadcb25-969f-4d4f-900b-7e7bde58aec3">
+2024.09.10目前所產出的畫面：
+<img width="1114" alt="alpha-camp-step2" src="https://github.com/user-attachments/assets/f3d82583-fdc2-413f-8ea9-6b89acda4f72">
 # 特點
 該專案畫面為典型的電商平台中會出現之功能。
 # 開發工具
