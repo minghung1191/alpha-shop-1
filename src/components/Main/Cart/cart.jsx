@@ -36,7 +36,7 @@ function Product ( {_id, name, img, price, quantity}) {
                         src= {minus}
                         alt= "minus.svg"
                     />
-                    <span className={styles.productCount}>0</span>
+                    <span className={styles.productCount}>1</span>
                     <img 
                         className={`${styles.productAction} plus`} 
                         src= {plus}
@@ -64,9 +64,9 @@ export default function Cart () {
             <div className={styles.text}>運費</div>
             <div className={styles.price}>免費</div>
           </section>
-          <section className={`${styles.cartInfo} total col col-12}`}>
+          <section className={`${styles.cartInfo} total col col-12`}>
             <div className={styles.text}>小計</div>
-            <div className={styles.price}>$0</div>
+            <div className={styles.price}>$300</div>
           </section>
         </section>
     )
