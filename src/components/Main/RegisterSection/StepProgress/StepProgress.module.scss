@@ -69,6 +69,17 @@ width: 100%;
     border-style: solid;
 }
 
+.progressBarUndone {
+    display: flex;
+    flex-grow: 1;
+    max-width: 60px;
+    height: 1px;
+    margin: 0px 8px;
+    border-width: 2px;
+    border-style: solid;
+    color: var(--progress-undone-color);
+}
+
 .progressGroup {
     display: flex;
 
@@ -90,9 +101,38 @@ width: 100%;
         line-height: 24px;
         text-align: center;
         color: inherit;
-        // 暫時多加的，為了顯示圓圈
+        // 為顯示圓圈
         border: 1px solid black;
         border-radius: 50%;
+    }
+    //黑底白字
+    .textBgcBlack {
+        width: inherit;
+        height: inherit;
+        position: absolute;
+        top: 0px;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 24px;
+        text-align: center;
+        color: white;
+        background-color: black;
+        border-radius: 50%;
+    }
+    //未完成階段樣式
+    .textUndone {
+        width: inherit;
+        height: inherit;
+        position: absolute;
+        top: 0px;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 24px;
+        text-align: center;
+        // 外框顏色另外改
+        border: 1px solid var(--progress-undone-color);
+        border-radius: 50%;
+        @extend %undone-text;
     }
 
     .icon {
@@ -105,6 +145,12 @@ width: 100%;
     font-weight: 400;
     line-height: 24px;
     color: var(--main-text);
+    }
+    //未完成時，label樣式
+    .labelUndone {
+        font-weight: 400;
+        line-height: 24px;
+        @extend %undone-text;
     }
 }
 }
