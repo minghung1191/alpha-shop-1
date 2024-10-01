@@ -1,4 +1,4 @@
-import styles from "./cart.module.scss" ;
+import styles from "./Cart.module.scss" ;
 import plus from "../../../icons/plus.svg";
 import minus from "../../../icons/minus.svg";
 

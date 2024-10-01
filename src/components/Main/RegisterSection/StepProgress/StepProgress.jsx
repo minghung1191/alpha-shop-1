@@ -20,7 +20,7 @@ export default function StepProgress () {
           <StepNotice dataPhase="address" text=" " label="寄送地址" />
             <span className={styles.progressBar} data-order={1}/>
           {/*<StepNotcie dataPhase="shipping" text="2" label="運送方式" />*/}
-          <span className={styles.progressGroup} dataPhase='shipping'>
+          <span className={styles.progressGroup} data-phase='shipping'>
           <span className={styles.progressIcon}>
             <span className={styles.text}>2</span>
           </span>
@@ -28,7 +28,7 @@ export default function StepProgress () {
           </span>
           <span className={styles.progressBar} data-order={2} />
           {/*<StepNotcie dataPhase="credit-card" text="3" label="付款資訊" />*/}
-          <span className={styles.progressGroup} dataPhase='credit-card'>
+          <span className={styles.progressGroup} data-phase='credit-card'>
           <span className={styles.progressIcon}>
             <span className={styles.text}>3</span>
           </span>

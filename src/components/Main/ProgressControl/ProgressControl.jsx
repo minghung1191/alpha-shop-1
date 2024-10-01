@@ -2,9 +2,9 @@ import styles from "./ProgressControl.module.scss";
 import rightArrow from "../../../icons/right-arrow.svg";
 import leftArrow from "../../../icons/left-arrow.svg";
 
-function PreviousStep() {
+function PreviousStep({handleClickPrevious}) {
   return (
-    <button className={styles.prev}>
+    <button className={`${styles.prev} cursorPoint`} onClick = {handleClickPrevious}>
       <img 
         className="cursorPoint" 
         src= {leftArrow} 
@@ -14,10 +14,9 @@ function PreviousStep() {
     </button>
   )
 }
-function NextStep () {
-  //忘記加上return導致畫面才沒呈現button畫面
+function NextStep ({handleClickNext}) {
   return (
-  <button className={styles.next}>
+  <button className={`${styles.next} cursorPoint`} onClick = {handleClickNext}>
     下一步
     <img 
       className="cursorPoint" 
@@ -27,20 +26,26 @@ function NextStep () {
   </button>
   )
 }
-//目前只出現Step1畫面
-export default function ProgressControl () {
+//3步驟畫面切換
+export default function ProgressControl ({handleClickPrevious, handleClickNext, stepPhase}) {
     return (
         <section className={`${styles.progressControlContainer} col col-lg-6 col-sm-12`}>
-        <section className={`${styles.buttonGroup} col col-12`} data-phase="address">
-          <NextStep />
+        {stepPhase === 1 &&
+          <section className={`${styles.buttonGroup} col col-12`} data-phase="address">
+          <NextStep handleClickNext={handleClickNext} />
+        </section>}
+        {stepPhase === 2 &&
+          <section className={`${styles.buttonGroup} col col-12`} data-phase="shipping">
+          <PreviousStep handleClickPrevious={handleClickPrevious} />
+          <NextStep handleClickNext={handleClickNext} />
         </section>
-        {/*<section className="button-group col col-12" data-phase="shipping">
-          <PreviousStep />
+        }
+        {stepPhase === 3 &&
+          <section className={`${styles.buttonGroup} col col-12`} data-phase="credit-card">
+          <PreviousStep handleClickPrevious={handleClickPrevious} />
+          <button className={`${styles.next} cursorPoint`}>確認下單</button>
         </section>
-        <section className="button-group col col-12" data-phase="credit-card">
-          <PreviousStep />
-          <button className="next">確認下單</button>
-        </section>*/}
+        } 
       </section>
     )
 }
