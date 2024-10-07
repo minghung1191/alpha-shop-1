@@ -2,7 +2,7 @@ import styles from "./CartItems.module.scss" ;
 import plus from "../../../icons/plus.svg";
 import minus from "../../../icons/minus.svg";
 
-function CartItem ( {id, name, img, price, quantity, increase1, increase2, decrease1, decrease2}) {
+function CartItem ( {id, name, img, price, quantity, handleClickChangeItemNum}) {
     if (quantity > 0 ) {
     return (
     <div 
@@ -19,15 +19,19 @@ function CartItem ( {id, name, img, price, quantity, increase1, increase2, decre
         <div className={styles.productName}>{name}</div>
         <div className={styles.productControlContainer}>
             <div className={styles.productControl}>
-            <img
-                onClick={id === "1" ? decrease1 : decrease2 } 
+            <input
+                type= "image"
+                value= {-1}
+                onClick= { e => { handleClickChangeItemNum(id, Number(e.target.value)) }} 
                 className={`${styles.productAction} minus`} 
                 src= {minus}
                 alt= "minus.svg"
             />
             <span className={styles.productCount}>{quantity}</span>
-            <img 
-                onClick={id === "1" ? increase1 : increase2}
+            <input 
+                type= "image"
+                value= {1}
+                onClick={ e => { handleClickChangeItemNum(id, Number(e.target.value)) }}
                 className={`${styles.productAction} plus`} 
                 src= {plus}
                 alt= "plus.svg"
@@ -41,11 +45,11 @@ function CartItem ( {id, name, img, price, quantity, increase1, increase2, decre
     }
 }
 
-export default function CartItems ({data,increase1, increase2, decrease1, decrease2 }) {
+export default function CartItems ({data, handleClickChangeItemNum }) {
     return(
     <>
         {data.map (cartItem => 
-            <CartItem {...cartItem} key={cartItem.id} increase1={increase1} increase2={increase2} decrease1={decrease1} decrease2={decrease2}/>    
+            <CartItem {...cartItem} key={cartItem.id} handleClickChangeItemNum={handleClickChangeItemNum} />    
         )}
     </>
     )
