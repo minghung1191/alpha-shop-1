@@ -203,46 +203,46 @@ section.buttonGroup {
 // }
 // }
 
-// @media screen and (max-width: $screen-break-point) {
-// section.progressContainer {
-// margin-top: 24px;
+@media screen and (max-width: $screen-break-point) {
+section.progressContainer {
+margin-top: 24px;
 
-// .progressGroup {
-//     .progressIcon {
-//     width: 32px;
-//     height: 32px;
-//     margin-right: 0px;
+.progressGroup {
+    .progressIcon {
+    width: 32px;
+    height: 32px;
+    margin-right: 0px;
 
-//     .text {
-//         line-height: 32px;
-//     }
-//     }
-// }
+    .text {
+        line-height: 32px;
+    }
+    }
+}
 
-// .progressLabel {
-//     display: none;
-// }
-// }
+.progressLabel {
+    display: none;
+}
+}
 
-// section.formContainer {
-// margin-top: 24px;
-// }
+section.formContainer {
+margin-top: 24px;
+}
 
-// section.progressControlContainer {
-// position: relative;
-// margin-top: 24px;
-// margin-bottom: 40px;
-// }
+section.progressControlContainer {
+position: relative;
+margin-top: 24px;
+margin-bottom: 40px;
+}
 
-// section.buttonGroup {
-// button.next {
-//     width: 156px;
-// }
+section.buttonGroup {
+button.next {
+    width: 156px;
+}
 
-// &[data-phase='address'] {
-//     button.next {
-//     width: 100%;
-//     }
-// }
-// }
-// }
+&[data-phase='address'] {
+    button.next {
+    width: 100%;
+    }
+}
+}
+}

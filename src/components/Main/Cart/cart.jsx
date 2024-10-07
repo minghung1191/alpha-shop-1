@@ -1,8 +1,8 @@
 import styles from "./Cart.module.scss" ;
-import plus from "../../../icons/plus.svg";
-import minus from "../../../icons/minus.svg";
+import { useState } from "react";
+import CartItems from "./CartItems";
 
-const productItemData = [
+const cartItemsData = [
     {
         id: '1',
         name: '貓咪罐罐',
@@ -18,55 +18,54 @@ const productItemData = [
         quantity: 1,
     },
 ]
-
-function Product ( {_id, name, img, price, quantity}) {
-    return (
-        <div className={`${styles.productContainer} col col-12`} data-count={quantity} data-price={price}>
-              <img 
-                className={styles.imgContainer} 
-                src={img} 
-                alt= " product img"
-              />
-              <div className={styles.productInfo}>
-                <div className={styles.productName}>{name}</div>
-                <div className={styles.productControlContainer}>
-                  <div className={styles.productControl}>
-                    <img 
-                        className={`${styles.productAction} minus`} 
-                        src= {minus}
-                        alt= "minus.svg"
-                    />
-                    <span className={styles.productCount}>1</span>
-                    <img 
-                        className={`${styles.productAction} plus`} 
-                        src= {plus}
-                        alt= "plus.svg"
-                    />
-                  </div>
-                </div>
-                <div className={styles.price}>{price}</div>
-              </div>
-            </div>
-    )
-}
-
+const cartItemsDataCal = cartItemsData.map (cartItemData => {
+  return {...cartItemData}
+})
 
 export default function Cart () {
+  const [quantity1, setQuantity1] = useState(cartItemsDataCal[0].quantity)
+  const [quantity2, setQuantity2] = useState(cartItemsDataCal[1].quantity)
+  const totalPrice = cartItemsDataCal[0].quantity * cartItemsDataCal[0].price + cartItemsDataCal[1].quantity * cartItemsDataCal[1].price
+  //運費先以0計算
+  const deliveryFee = 0
+
+  function handleIncreaseItem1Click() {
+    setQuantity1(
+      cartItemsDataCal[0].quantity = cartItemsDataCal[0].quantity + 1
+    )
+  }
+  function handleIncreaseItem2Click() {
+    setQuantity2(
+      cartItemsDataCal[1].quantity = cartItemsDataCal[1].quantity + 1
+    )
+  }
+  function handleDecreaseItem1Click() {
+    if (cartItemsDataCal[0].quantity > 0) {
+      setQuantity1(
+        cartItemsDataCal[0].quantity = cartItemsDataCal[0].quantity - 1
+      )
+    }
+  }
+  function handleDecreaseItem2Click() {
+    if (cartItemsDataCal[1].quantity > 0) {
+      setQuantity2(
+        cartItemsDataCal[1].quantity = cartItemsDataCal[1].quantity - 1
+      )
+    }
+  }
     return (
         <section className={`${styles.cartContainer} col col-lg-5 col-sm-12`}>
           <h3 className={styles.cartTitle}>購物籃</h3>
           <section className={`${styles.productList} col col-12`} data-total-price={0}>
-           {productItemData.map (productItem =>
-            <Product {...productItem} key={productItem.id} />
-           )}
+          <CartItems data={cartItemsDataCal} increase1={handleIncreaseItem1Click} increase2={handleIncreaseItem2Click} decrease1={handleDecreaseItem1Click} decrease2={handleDecreaseItem2Click}/>
           </section>
           <section className={`${styles.cartInfo} shipping col col-12`}>
             <div className={styles.text}>運費</div>
-            <div className={styles.price}>免費</div>
+            <div className={styles.price}>{deliveryFee}</div>
           </section>
           <section className={`${styles.cartInfo} total col col-12`}>
             <div className={styles.text}>小計</div>
-            <div className={styles.price}>$300</div>
+            <div className={styles.price}>{totalPrice + deliveryFee}</div>
           </section>
         </section>
     )
