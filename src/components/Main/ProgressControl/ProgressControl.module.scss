@@ -75,7 +75,7 @@ section.buttonGroup {
     border-width: 0px;
     padding: 0px;
 
-    &>svg {
+    &>.svg {
         width: 24px;
         height: 24px;
     }
@@ -86,7 +86,7 @@ section.buttonGroup {
         font-weight: 400;
         color: #000000;
 
-        >svg {
+        >.svg {
         margin-right: 12px;
         }
     }
@@ -100,7 +100,7 @@ section.buttonGroup {
         color: #FFFFFF;
         margin-left: auto;
 
-        >svg {
+        >.svg {
         margin-left: 12px;
         }
     }

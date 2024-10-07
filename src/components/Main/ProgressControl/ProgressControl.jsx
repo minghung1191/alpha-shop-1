@@ -6,7 +6,7 @@ function PreviousStep({handleClickPrevious}) {
   return (
     <button className={`${styles.prev} cursorPoint`} onClick = {handleClickPrevious}>
       <img 
-        className="cursorPoint" 
+        className={styles.svg} 
         src= {leftArrow} 
         alt="left-arrow.svg" 
       />
@@ -19,7 +19,7 @@ function NextStep ({handleClickNext}) {
   <button className={`${styles.next} cursorPoint`} onClick = {handleClickNext}>
     下一步
     <img 
-      className="cursorPoint" 
+      className={styles.svg} 
       src= {rightArrow} 
       alt="right-arrow.svg" 
     />
